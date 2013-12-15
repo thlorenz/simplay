@@ -20,6 +20,7 @@ function UrlsForNamesTransform (opts) {
   
   Transform.call(this, opts);
   this._writableState.decodeStrings = false;
+  this.artist = opts.artist;
   this.json = '';
 }
 
@@ -34,7 +35,13 @@ UrlsForNamesTransform.prototype._flush = function (cb) {
                 ];
   try {
     var o = JSON.parse(this.json);
-    o.similarartists.artist.forEach(function (node) {
+    var artists = o.similarartists.artist;
+    if (!Array.isArray(artists)) {
+      this.push('Sorry, no records for "' + this.artist + '" where found, please correct your spelling and/or try another artist.');
+      return cb();
+    }
+
+    artists.forEach(function (node) {
       var url = 'http://www.youtube.com/results?search_query={{artist}},playlist'.replace('{{artist}}', node.name);
       records.push([ node.name, node.match,  encodeURI(url) + '\n']);
     })
@@ -68,6 +75,6 @@ function simplay(artist, apikey) {
 
   return hyperquest(url)
     .on('error', console.error)
-    .pipe(new UrlsForNamesTransform())
+    .pipe(new UrlsForNamesTransform({ artist: artist }))
     .on('error', console.error)
 };
