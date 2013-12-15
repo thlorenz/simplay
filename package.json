@@ -1,7 +1,7 @@
 {
   "name": "simplay",
   "version": "0.2.0",
-  "description": "Given an artist name it spits out links to playlists of similar artists on youtube.",
+  "description": "Given an artist name it spits out links to playlists and/or search results of similar artists on youtube, last.fm and rdio.",
   "main": "index.js",
   "bin": {
     "simplay": "bin/simplay.js"

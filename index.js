@@ -68,7 +68,7 @@ var go = module.exports =
 
 /**
  * Retrieves similar artists for the given artist from last.fm using the apikey.
- * Then it converts the information to display youtube.com playlist urls for each artist.
+ * Then it converts the information to display youtube.com, last.fm, rdio playlist/artist urls for each artist.
  * 
  * @name simplay
  * @function

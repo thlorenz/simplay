@@ -1,6 +1,6 @@
 # simplay
 
-Given an artist name it spits out links to playlists of similar artists on youtube.
+Given an artist name it spits out links to playlists and/or search results of similar artists on youtube, last.fm and rdio.
 
 ## Before you start 
 
@@ -23,7 +23,7 @@ or `CTRL` key in order to open it in your default browser.
 ```
 usage: simplay <artist>
 
-Retrieves similar artists from http://last.fm and prints out http://youtube.com playlist links for these artists.
+Retrieves similar artists from http://last.fm and prints out youtube, last.fm and rdio playlist or artist links.
 Artists are ordered in reverse, so that the best match is at the bottom of your terminal.
 
 NOTE: 
@@ -46,7 +46,7 @@ NOTE:
 ```
 /**
  * Retrieves similar artists for the given artist from last.fm using the apikey.
- * Then it converts the information to display youtube.com playlist urls for each artist.
+ * Then it converts the information to display youtube.com, last.fm, rdio playlist/artist urls for each artist.
  * 
  * @name simplay
  * @function
