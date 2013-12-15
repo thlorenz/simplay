@@ -19,7 +19,7 @@
     "ansistyles": "~0.1.3"
   },
   "devDependencies": {},
-  "keywords": [],
+  "keywords": [ "links", "url", "urls", "music", "last.fm", "youtube", "rdio", "similar", "artist", "artists", "find", "search", "play", "query" ],
   "author": {
     "name": "Thorsten Lorenz",
     "email": "thlorenz@gmx.de",
