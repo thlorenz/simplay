@@ -15,6 +15,9 @@ The Jimi Hendrix Experience            1          http://www.youtube.com/results
 Name                                   Match      Url
 ```
 
+**NOTE**: If you are using a decent terminal, you should be able to click/double-click on a link while holding the `CMD`
+or `CTRL` key in order to open it in your default browser.
+
 ## Usage
 
 ```
