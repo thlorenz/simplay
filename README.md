@@ -2,6 +2,13 @@
 
 Given an artist name it spits out links to playlists of similar artists on youtube.
 
+## Before you start 
+
+You need to create a last.fm account and [obtain an API key](http://www.last.fm/api/account/create)
+Then you need to set the `LASTFM_API` environment variable to your key.
+
+## Example
+
 ```sh
 > simplay Jimi Hendrix
 
