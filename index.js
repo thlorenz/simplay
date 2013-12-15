@@ -1,15 +1,16 @@
 'use strict';
 
 var urlschema = 'http://ws.audioscrobbler.com/2.0/?method=artist.getsimilar&artist={{artist}}&api_key={{apikey}}&format=json';
-var hyperquest = require('hyperquest')  
-  , table = require('text-table')
+
+var hyperquest =  require('hyperquest')
+  , table      =  require('text-table')
+  , colors     =  require('ansicolors')
+  , styles     =  require('ansistyles')
 
 var stream = require('stream');
 var util = require('util');
 
 var Transform = stream.Transform;
-
-module.exports = UrlsForNamesTransform;
 
 util.inherits(UrlsForNamesTransform, Transform);
 
@@ -30,9 +31,7 @@ UrlsForNamesTransform.prototype._transform = function (chunk, encoding, cb) {
 };
 
 UrlsForNamesTransform.prototype._flush = function (cb) {
-  var records = [ [ 'Name', 'Match', 'Url' ] 
-                , [ '=======', '========', '=============================']
-                ];
+  var records = [];
   try {
     var o = JSON.parse(this.json);
     var artists = o.similarartists.artist;
@@ -42,8 +41,20 @@ UrlsForNamesTransform.prototype._flush = function (cb) {
     }
 
     artists.forEach(function (node) {
-      var url = 'http://www.youtube.com/results?search_query={{artist}},playlist'.replace('{{artist}}', node.name);
-      records.push([ node.name, node.match,  encodeURI(url) + '\n']);
+      var youtubeurl = 'http://www.youtube.com/results?search_query={{artist}},playlist'.replace('{{artist}}', node.name);
+      var rdiourl = 'http://www.rdio.com/search/{{artist}}/artists/'.replace('{{artist}}', node.name);
+      var lastfmurl = 'http://www.last.fm/music/{{artist}}'.replace('{{artist}}', node.name);
+      var lastfmRadioUrl = 'http://www.last.fm/listen/artist/{{artist}}'.replace('{{artist}}', node.name);
+      var urls = [
+          ''
+        , colors.white('  youtube:       ') + styles.underline(colors.brightBlue(encodeURI(youtubeurl)))
+        , colors.blue ('  rdio:          ') + styles.underline(colors.brightBlue(encodeURI(rdiourl)))
+        , colors.brightRed  ('  last.fm:       ') + styles.underline(colors.brightBlue(encodeURI(lastfmurl)))
+        , colors.red  ('  last.fm radio: ') + styles.underline(colors.brightBlue(encodeURI(lastfmRadioUrl)))
+        , ''
+        , ''].join('\n');
+
+      records.push([ '\n' + colors.brightYellow(node.name), colors.cyan(node.match), urls ]);
     })
     this.push(table(records.reverse()));
     cb();

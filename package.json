@@ -6,8 +6,7 @@
   "bin": {
     "simplay": "bin/simplay.js"
   },
-  "scripts": {
-  },
+  "scripts": {},
   "repository": {
     "type": "git",
     "url": "git://github.com/thlorenz/simplay.git"
@@ -15,10 +14,11 @@
   "homepage": "https://github.com/thlorenz/simplay",
   "dependencies": {
     "hyperquest": "~0.1.8",
-    "text-table": "~0.2.0"
+    "text-table": "~0.2.0",
+    "ansicolors": "~0.3.2",
+    "ansistyles": "~0.1.3"
   },
-  "devDependencies": {
-  },
+  "devDependencies": {},
   "keywords": [],
   "author": {
     "name": "Thorsten Lorenz",
