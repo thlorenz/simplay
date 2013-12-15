@@ -1,4 +1,4 @@
-# similar-playlists
+# simplay
 
 Given an artist name it spits out links to playlists of similar artists on youtube.
 
@@ -11,7 +11,7 @@ Given an artist name it spits out links to playlists of similar artists on youtu
 Nix, Nada, Nichevo, Nothing --> go away!
 ## Installation
 
-    npm install similar-playlists
+    npm install simplay
 
 ## API
 

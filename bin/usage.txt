@@ -1,0 +1,12 @@
+usage: simplay artist
+
+Retrieves similar artists from http://last.fm and prints out http://youtube.com playlist links for these artists.
+Artists are ordered in reverse, so that the best match is at the bottom of your terminal.
+
+NOTE: 
+  You need to create a last.fm account and obtain an API key: http://www.last.fm/api/account/create
+  Then you need to set the LASTFM_API environment variable to your key.
+
+  As an alternative you can always provide the key when you run simplay like so:
+
+  LASTFM_API=abcd123 simplay metallica

@@ -1,5 +1,5 @@
 {
-  "name": "similar-playlists",
+  "name": "simplay",
   "version": "0.0.0",
   "description": "Given an artist name it spits out links to playlists of similar artists on youtube.",
   "main": "index.js",
@@ -12,9 +12,9 @@
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/thlorenz/similar-playlists.git"
+    "url": "git://github.com/thlorenz/simplay.git"
   },
-  "homepage": "https://github.com/thlorenz/similar-playlists",
+  "homepage": "https://github.com/thlorenz/simplay",
   "dependencies": {
     "hyperquest": "~0.1.8",
     "text-table": "~0.2.0"
@@ -32,7 +32,7 @@
   },
   "license": {
     "type": "MIT",
-    "url": "https://github.com/thlorenz/similar-playlists/blob/master/LICENSE"
+    "url": "https://github.com/thlorenz/simplay/blob/master/LICENSE"
   },
   "engine": {
     "node": ">=0.6"

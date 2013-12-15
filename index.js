@@ -46,7 +46,19 @@ UrlsForNamesTransform.prototype._flush = function (cb) {
 }
 
 
-var go = module.exports = function (artist, apikey) {
+var go = module.exports = 
+
+/**
+ * Retrieves similar artists for the given artist from last.fm using the apikey.
+ * Then it converts the information to display youtube.com playlist urls for each artist.
+ * 
+ * @name simplay
+ * @function
+ * @param {String} artist the artist to find similar artists for
+ * @param {String} apikey the api key to be used with last.fm
+ * @return {ReadableStream} that will push the url information
+ */
+function simplay(artist, apikey) {
   if (!artist) throw new Error('Please provid the artist that you like to get similar artist links for');
   if (!apikey) throw new Error('Please set LASTFM_API env variable to your API key: http://www.last.fm/api/account/create');
 
@@ -54,18 +66,8 @@ var go = module.exports = function (artist, apikey) {
     .replace('{{artist}}', artist)
     .replace('{{apikey}}', apikey);
 
-  hyperquest(url)
+  return hyperquest(url)
     .on('error', console.error)
     .pipe(new UrlsForNamesTransform())
     .on('error', console.error)
-    .pipe(process.stdout);
 };
-
-// Test
-if (!module.parent && typeof window === 'undefined') {
-  var key = process.env.LASTFM_API
-    , artist = 'metallica';
-  
-  go(artist, key);
-    
-}
