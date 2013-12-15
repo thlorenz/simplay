@@ -3,7 +3,7 @@
 var simplay = require('../');
 
 var key = process.env.LASTFM_API
-  , artist = process.argv.slice(2)[0];
+  , artist = process.argv.slice(2).join(' ');
    
 if (!key || !artist) return require('fs').createReadStream(__dirname + '/usage.txt').pipe(process.stdout);
 

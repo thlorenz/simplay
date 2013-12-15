@@ -3,6 +3,9 @@
   "version": "0.0.0",
   "description": "Given an artist name it spits out links to playlists of similar artists on youtube.",
   "main": "index.js",
+  "bin": {
+    "simplay": "bin/simplay.js"
+  },
   "scripts": {
     "test-main": "tap test/*.js",
     "test-0.8": "nave use 0.8 npm run test-main",

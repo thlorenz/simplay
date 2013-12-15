@@ -1,4 +1,4 @@
-usage: simplay artist
+usage: simplay <artist>
 
 Retrieves similar artists from http://last.fm and prints out http://youtube.com playlist links for these artists.
 Artists are ordered in reverse, so that the best match is at the bottom of your terminal.
