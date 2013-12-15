@@ -11,16 +11,9 @@ Then you need to set the `LASTFM_API` environment variable to your key.
 
 ```sh
 > simplay Jimi Hendrix
-
-[...]
-Stevie Ray Vaughan                     0.273101   http://www.youtube.com/results?search_query=Stevie%20Ray%20Vaughan,playlist
-The Doors                              0.285946   http://www.youtube.com/results?search_query=The%20Doors,playlist
-Cream                                  0.289096   http://www.youtube.com/results?search_query=Cream,playlist
-Led Zeppelin                           0.367223   http://www.youtube.com/results?search_query=Led%20Zeppelin,playlist
-The Jimi Hendrix Experience            1          http://www.youtube.com/results?search_query=The%20Jimi%20Hendrix%20Experience,playlist
-=======                                ========   =============================
-Name                                   Match      Url
 ```
+
+![jimi-hendrix](https://raw.github.com/thlorenz/simplay/master/assets/jimi-hendrix-results.png)
 
 **NOTE**: If you are using a decent terminal, you should be able to click/double-click on a link while holding the `CMD`
 or `CTRL` key in order to open it in your default browser.
