@@ -14,6 +14,15 @@ var Transform = stream.Transform;
 
 util.inherits(UrlsForNamesTransform, Transform);
 
+function url(schema, artist) {
+  return encodeURI(schema.replace('{{artist}}', artist)).replace('&', '%26');
+}
+
+
+function styleUrl(url) {
+  return styles.underline(colors.brightBlue(url));
+}
+
 function UrlsForNamesTransform (opts) {
   if (!(this instanceof UrlsForNamesTransform)) return new UrlsForNamesTransform(opts);
 
@@ -41,16 +50,17 @@ UrlsForNamesTransform.prototype._flush = function (cb) {
     }
 
     artists.forEach(function (node) {
-      var youtubeurl = 'http://www.youtube.com/results?search_query={{artist}},playlist'.replace('{{artist}}', node.name);
-      var rdiourl = 'http://www.rdio.com/search/{{artist}}/artists/'.replace('{{artist}}', node.name);
-      var lastfmurl = 'http://www.last.fm/music/{{artist}}'.replace('{{artist}}', node.name);
-      var lastfmRadioUrl = 'http://www.last.fm/listen/artist/{{artist}}'.replace('{{artist}}', node.name);
+      var youtubeurl     =  url('http://www.youtube.com/results?search_query={{artist}},playlist', node.name)
+        , rdiourl        =  url('http://www.rdio.com/search/{{artist}}/artists/', node.name)
+        , lastfmurl      =  url('http://www.last.fm/music/{{artist}}', node.name)
+        , lastfmRadioUrl =  url('http://www.last.fm/listen/artist/{{artist}}', node.name)
+
       var urls = [
           ''
-        , colors.white('  youtube:       ') + styles.underline(colors.brightBlue(encodeURI(youtubeurl)))
-        , colors.blue ('  rdio:          ') + styles.underline(colors.brightBlue(encodeURI(rdiourl)))
-        , colors.brightRed  ('  last.fm:       ') + styles.underline(colors.brightBlue(encodeURI(lastfmurl)))
-        , colors.red  ('  last.fm radio: ') + styles.underline(colors.brightBlue(encodeURI(lastfmRadioUrl)))
+        , colors.white      ('  youtube       ') + styleUrl(youtubeurl)
+        , colors.blue       ('  rdio          ') + styleUrl(rdiourl)
+        , colors.brightRed  ('  last.fm       ') + styleUrl(lastfmurl)
+        , colors.red        ('  last.fm radio ') + styleUrl(lastfmRadioUrl)
         , ''
         , ''].join('\n');
 
